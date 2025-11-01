@@ -1,0 +1,464 @@
+{
+  "info": {
+    "_postman_id": "leaderboard-api-collection",
+    "name": "Leaderboard API",
+    "description": "Complete API collection for Redis-based Leaderboard Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Setup - Add Players",
+      "item": [
+        {
+          "name": "Add Player - Alice",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"playerId\": \"alice\",\n    \"score\": 1000\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/score",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "score"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Player - Bob",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"playerId\": \"bob\",\n    \"score\": 1500\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/score",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "score"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Player - Charlie",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"playerId\": \"charlie\",\n    \"score\": 800\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/score",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "score"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Player - Diana",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"playerId\": \"diana\",\n    \"score\": 2000\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/score",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "score"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Player - Eve",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"playerId\": \"eve\",\n    \"score\": 1200\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/score",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "score"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Score Management",
+      "item": [
+        {
+          "name": "Add or Update Score",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"playerId\": \"{{player_id}}\",\n    \"score\": 1500\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/score",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "score"]
+            },
+            "description": "Add a new player or update existing player's score"
+          },
+          "response": []
+        },
+        {
+          "name": "Increment Score",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"playerId\": \"{{player_id}}\",\n    \"points\": 250\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/increment",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "increment"]
+            },
+            "description": "Increment player's score by specified points"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Leaderboard Queries",
+      "item": [
+        {
+          "name": "Get Top 10 Players",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/top?count=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "top"],
+              "query": [
+                {
+                  "key": "count",
+                  "value": "10",
+                  "description": "Number of top players to retrieve"
+                }
+              ]
+            },
+            "description": "Get top N players (player IDs only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Top 10 Players with Scores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/top-with-scores?count=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "top-with-scores"],
+              "query": [
+                {
+                  "key": "count",
+                  "value": "10",
+                  "description": "Number of top players to retrieve"
+                }
+              ]
+            },
+            "description": "Get top N players with their ranks and scores"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Top 3 Players",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/top-with-scores?count=3",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "top-with-scores"],
+              "query": [
+                {
+                  "key": "count",
+                  "value": "3"
+                }
+              ]
+            },
+            "description": "Get top 3 players (podium)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Total Players",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/total",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "total"]
+            },
+            "description": "Get total number of players in leaderboard"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Players by Score Range",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/range?min=1000&max=2000",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "range"],
+              "query": [
+                {
+                  "key": "min",
+                  "value": "1000",
+                  "description": "Minimum score"
+                },
+                {
+                  "key": "max",
+                  "value": "2000",
+                  "description": "Maximum score"
+                }
+              ]
+            },
+            "description": "Get all players within a score range"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Player Queries",
+      "item": [
+        {
+          "name": "Get Player Rank",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/player/{{player_id}}/rank",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "player", "{{player_id}}", "rank"]
+            },
+            "description": "Get specific player's rank"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Player Score",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/player/{{player_id}}/score",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "player", "{{player_id}}", "score"]
+            },
+            "description": "Get specific player's score"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Player Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/player/{{player_id}}/stats",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "player", "{{player_id}}", "stats"]
+            },
+            "description": "Get complete stats for a player (rank, score, total players)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Players Around",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/player/{{player_id}}/around?count=5",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "player", "{{player_id}}", "around"],
+              "query": [
+                {
+                  "key": "count",
+                  "value": "5",
+                  "description": "Number of players above and below"
+                }
+              ]
+            },
+            "description": "Get players around a specific player (context)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Player Management",
+      "item": [
+        {
+          "name": "Remove Player",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/player/{{player_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "player", "{{player_id}}"]
+            },
+            "description": "Remove a player from the leaderboard"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Example Scenarios",
+      "item": [
+        {
+          "name": "Scenario 1 - Player Wins Match",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"playerId\": \"alice\",\n    \"points\": 100\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/increment",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "increment"]
+            },
+            "description": "Alice wins a match and gains 100 points"
+          },
+          "response": []
+        },
+        {
+          "name": "Scenario 2 - Check My Position",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/player/alice/stats",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "player", "alice", "stats"]
+            },
+            "description": "Alice checks her position in the leaderboard"
+          },
+          "response": []
+        },
+        {
+          "name": "Scenario 3 - View Competition",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/player/alice/around?count=3",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "player", "alice", "around"],
+              "query": [
+                {
+                  "key": "count",
+                  "value": "3"
+                }
+              ]
+            },
+            "description": "Alice views players near her rank"
+          },
+          "response": []
+        },
+        {
+          "name": "Scenario 4 - Show Hall of Fame",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/leaderboard/top-with-scores?count=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leaderboard", "top-with-scores"],
+              "query": [
+                {
+                  "key": "count",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Display top 10 players on website"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "player_id",
+      "value": "alice",
+      "type": "string"
+    }
+  ]
+}
